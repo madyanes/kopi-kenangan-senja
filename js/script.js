@@ -7,7 +7,8 @@ hamburgerMenu.onclick = () => {
 }
 
 // Remove `active` class when we click on all elements except `hamburgerMenu` and `navbarNav`
-document.addEventListener('click', (e) => {
-  if (!hamburgerMenu.contains(e.target) && !navbarNav.contains(e.target))
+document.onclick = (e) => {
+  if (!hamburgerMenu.contains(e.target) && !navbarNav.contains(e.target)) {
     navbarNav.classList.remove('active')
-})
+  }
+}
