@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,100&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,100;1,700&display=swap"
       rel="stylesheet"
     />
 
@@ -20,8 +20,33 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!-- Navbar start -->
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">kenangan<span>senja</span>.</a>
+      <div class="navbar-nav">
+        <a href="#">Home</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Kontak</a>
+      </div>
+      <div class="navbar-extra">
+        <a href="#">
+          <i data-feather="search" id="search"></i>
+        </a>
+        <a href="#">
+          <i data-feather="shopping-cart" id="shopping-cart"></i>
+        </a>
+        <a href="#">
+          <i data-feather="menu" id="hamburger-menu"></i>
+        </a>
+      </div>
+    </nav>
+    <!-- Navbar end -->
     <script>
       feather.replace()
     </script>
+
+    <!-- Our custom JavaScript -->
+    <script src="js/script.js"></script>
   </body>
 </html>
