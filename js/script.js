@@ -1,4 +1,4 @@
-import { toggleActiveClass, removeActiveClass } from './helpers.js'
+import { toggleActiveClass, removeActiveClass, toggleModal } from './helpers.js'
 
 const navbarNav = document.querySelector('.navbar-nav')
 const hamburgerButton = document.querySelector('#hamburger-menu')
@@ -11,28 +11,28 @@ const itemDetailModal = document.querySelector('#item-detail-modal')
 const itemDetailButtons = document.querySelectorAll('.item-detail-button')
 const itemDetailCloseButton = document.querySelector('.modal .close-icon')
 
-toggleActiveClass(hamburgerButton, navbarNav)
-toggleActiveClass(searchButton, searchForm, () => {
-  searchInput.focus()
-})
-toggleActiveClass(shoppingCartButton, shoppingCart)
+toggleActiveClass([
+  {
+    button: hamburgerButton,
+    element: navbarNav,
+  },
+  {
+    button: searchButton,
+    element: searchForm,
+    callback: () => {
+      searchInput.focus()
+    },
+  },
+  {
+    button: shoppingCartButton,
+    element: shoppingCart,
+  },
+])
 
-document.onclick = (e) => {
-  removeActiveClass(e, hamburgerButton, navbarNav)
-  removeActiveClass(e, searchButton, searchForm)
-  removeActiveClass(e, shoppingCartButton, shoppingCart)
-}
+removeActiveClass([
+  { button: hamburgerButton, element: navbarNav },
+  { button: searchButton, element: searchForm },
+  { button: shoppingCartButton, element: shoppingCart },
+])
 
-itemDetailButtons.forEach((btn) => {
-  btn.onclick = () => {
-    itemDetailModal.style.display = 'flex'
-  }
-})
-
-itemDetailCloseButton.onclick = () => {
-  itemDetailModal.style.display = 'none'
-}
-
-window.onclick = (e) => {
-  if (e.target === itemDetailModal) itemDetailModal.style.display = 'none'
-}
+toggleModal(itemDetailButtons, itemDetailModal, itemDetailCloseButton)
