@@ -91,6 +91,24 @@
         <h4 x-show="$store.cart.items.length">
           Total: <span x-text="formatRupiah($store.cart.total)"></span>
         </h4>
+        <div class="form-container" x-show="$store.cart.items.length">
+          <form action="" id="checkout-form">
+            <h5>Data Pembeli</h5>
+            <label>
+              <span>Nama</span>
+              <input type="text" name="name" />
+            </label>
+            <label>
+              <span>Surel</span>
+              <input type="email" name="email" />
+            </label>
+            <label>
+              <span>No. HP</span>
+              <input type="number" name="phone" autocomplete="off" />
+            </label>
+            <button class="checkout-button" id="checkout-button">Bayar</button>
+          </form>
+        </div>
       </div>
     </nav>
     <!-- Navbar end -->
