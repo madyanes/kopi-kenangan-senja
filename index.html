@@ -74,7 +74,7 @@
               <h3 x-text="item.name"></h3>
               <div class="item-price">
                 <span x-text="formatRupiah(item.price)"></span> &times;
-                <button id="remove" @click="$store.cart.remove(item.id)">
+                <button id="remove" @click.stop="$store.cart.remove(item.id)">
                   &minus;
                 </button>
                 <span x-text="item.quantity"></span>
