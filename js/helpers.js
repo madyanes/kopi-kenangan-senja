@@ -22,7 +22,7 @@
  *   { button: searchButton, element: searchForm, callback: () => searchInput.focus() }
  * ]);
  */
-export const toggleActiveClass = (elements) => {
+const toggleActiveClass = (elements) => {
   elements.forEach(({ button, element, callback }) => {
     button.onclick = () => {
       element.classList.toggle('active')
@@ -55,7 +55,7 @@ export const toggleActiveClass = (elements) => {
  *   { button: searchButton, element: searchForm }
  * ]);
  */
-export const removeActiveClass = (elements) => {
+const removeActiveClass = (elements) => {
   document.onclick = (e) => {
     elements.forEach(({ button, element }) => {
       if (!button.contains(e.target) && !element.contains(e.target)) {
@@ -76,7 +76,7 @@ export const removeActiveClass = (elements) => {
  * @param {HTMLElement} modal - Elemen modal yang akan ditampilkan atau disembunyikan.
  * @param {HTMLElement} closeButton - Tombol yang akan menutup modal.
  */
-export const toggleModal = (openButtons, modal, closeButton) => {
+const toggleModal = (openButtons, modal, closeButton) => {
   // Set onclick untuk semua tombol buka
   openButtons.forEach((btn) => {
     btn.onclick = () => {
@@ -95,4 +95,18 @@ export const toggleModal = (openButtons, modal, closeButton) => {
       modal.style.display = 'none'
     }
   }
+}
+
+/**
+ * Mengonversi nilai harga menjadi format mata uang Rupiah (IDR).
+ *
+ * @param {number} price - Nilai harga yang ingin diformat.
+ * @returns {string} - Harga yang diformat dalam bentuk string dengan format mata uang Rupiah.
+ */
+const formatRupiah = (price) => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+  }).format(price)
 }

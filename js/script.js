@@ -1,5 +1,3 @@
-import { toggleActiveClass, removeActiveClass, toggleModal } from './helpers.js'
-
 const navbarNav = document.querySelector('.navbar-nav')
 const hamburgerButton = document.querySelector('#hamburger-menu')
 const searchForm = document.querySelector('.search-form')
