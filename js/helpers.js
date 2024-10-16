@@ -142,3 +142,61 @@ function toggleButtonOnFormInput(form, button, disabledClass) {
     button.classList.toggle(disabledClass, !allFilled) // Tambah atau hapus kelas disabled
   })
 }
+
+/**
+ * Fungsi untuk mengonversi data form checkout menjadi URL WhatsApp dengan pesan yang terformat.
+ * @param {HTMLFormElement} form - Elemen form yang ingin dikonversi datanya.
+ * @param {string} phoneNumber - Nomor WhatsApp tujuan dalam format internasional (contoh: '628988889700').
+ * @param {Function} formatMessage - Fungsi untuk memformat pesan yang dikirimkan.
+ *
+ * @example
+ * const checkoutForm = document.getElementById('checkoutForm');
+ * handleCheckout(checkoutForm, '6289xxx', formatMessage);
+ */
+function handleCheckout(form, phoneNumber, formatMessage) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const formData = new FormData(form)
+    const data = new URLSearchParams(formData)
+    const objData = Object.fromEntries(data)
+    const message = formatMessage(objData)
+
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    )
+  })
+}
+
+/**
+ * Fungsi untuk memformat pesan checkout dari data form yang diambil.
+ * @param {Object} obj - Data dari form checkout yang sudah dikonversi menjadi object.
+ * @param {string} obj.name - Nilai input dari field "name" di form.
+ * @param {string} obj.email - Nilai input dari field "email" di form.
+ * @param {string} obj.phone - Nilai input dari field "phone" di form.
+ * @returns {string} - Pesan terformat yang akan dikirimkan ke WhatsApp.
+ *
+ * @example
+ * const message = formatMessage({
+ *   name: "John Doe",
+ *   email: "johndoe@example.com",
+ *   phone: "08123456789",
+ * });
+ */
+function formatMessage(obj) {
+  return `
+Nama: ${obj.name}
+Email: ${obj.email}
+No. HP: ${obj.phone}
+
+Halo! Saya ingin membeli produk berikut ini:
+
+${JSON.parse(obj.items)
+  .map((item) => `${item.name} (x ${item.quantity})`)
+  .join('\n')}
+
+Mohon informasikan ketersediaan produk!
+
+Terima kasih
+  `
+}

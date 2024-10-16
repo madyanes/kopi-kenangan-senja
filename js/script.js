@@ -38,3 +38,5 @@ removeActiveClass([
 toggleModal(itemDetailButtons, itemDetailModal, itemDetailCloseButton)
 
 toggleButtonOnFormInput(checkoutForm, checkoutButton, 'disabled')
+
+handleCheckout(checkoutForm, '628988889700', formatMessage)
