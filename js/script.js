@@ -8,6 +8,8 @@ const shoppingCartButton = document.querySelector('#shopping-cart-button')
 const itemDetailModal = document.querySelector('#item-detail-modal')
 const itemDetailButtons = document.querySelectorAll('.item-detail-button')
 const itemDetailCloseButton = document.querySelector('.modal .close-icon')
+const checkoutForm = document.querySelector('#checkout-form')
+const checkoutButton = document.querySelector('#checkout-button')
 
 toggleActiveClass([
   {
@@ -34,3 +36,5 @@ removeActiveClass([
 ])
 
 toggleModal(itemDetailButtons, itemDetailModal, itemDetailCloseButton)
+
+toggleButtonOnFormInput(checkoutForm, checkoutButton, 'disabled')

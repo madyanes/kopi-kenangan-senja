@@ -110,3 +110,35 @@ const formatRupiah = (price) => {
     minimumFractionDigits: 0,
   }).format(price)
 }
+
+/**
+ * Fungsi untuk mengaktifkan atau menonaktifkan tombol berdasarkan
+ * apakah semua input di dalam form sudah terisi.
+ *
+ * @param {HTMLFormElement} form - Form yang berisi elemen input untuk divalidasi.
+ * @param {HTMLElement} button - Tombol yang akan diaktifkan atau dinonaktifkan.
+ * @param {string} disabledClass - Kelas CSS yang digunakan untuk menonaktifkan tombol.
+ *
+ * @example
+ * // Ambil elemen form dan button
+ * const formElement = document.getElementById('some-form');
+ * const submitButton = document.getElementById('submit-button');
+ *
+ * // Panggil fungsi untuk mengaktifkan/menonaktifkan tombol submit
+ * toggleButtonOnFormInput(formElement, submitButton, 'disabled');
+ */
+function toggleButtonOnFormInput(form, button, disabledClass) {
+  // Set awal tombol menjadi disable
+  button.disabled = true
+
+  form.addEventListener('keyup', () => {
+    // Cek apakah semua elemen input terisi
+    const allFilled = Array.from(form.elements)
+      .filter((element) => element.tagName === 'INPUT') // Hanya ambil elemen input
+      .every((element) => element.value.trim() !== '')
+
+    // Mengatur status tombol
+    button.disabled = !allFilled
+    button.classList.toggle(disabledClass, !allFilled) // Tambah atau hapus kelas disabled
+  })
+}
