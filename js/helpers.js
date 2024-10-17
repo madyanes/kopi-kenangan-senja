@@ -154,7 +154,7 @@ function toggleButtonOnFormInput(form, button, disabledClass) {
  * handleCheckout(checkoutForm, '6289xxx', formatMessage);
  */
 function handleCheckout(form, phoneNumber, formatMessage) {
-  form.addEventListener('submit', (e) => {
+  function submitHandler(e) {
     e.preventDefault()
 
     const formData = new FormData(form)
@@ -165,7 +165,11 @@ function handleCheckout(form, phoneNumber, formatMessage) {
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     )
-  })
+  }
+
+  // Mencegah penumpukan event listener
+  form.removeEventListener('submit', submitHandler)
+  form.addEventListener('submit', submitHandler)
 }
 
 /**
