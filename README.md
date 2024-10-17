@@ -2,6 +2,9 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/madyanes/kopi-kenangan-senja/badge)](https://www.codefactor.io/repository/github/madyanes/kopi-kenangan-senja)
 
+> [!WARNING]  
+> Proyek ini tidak terintegrasi dengan Midtrans karena saya menggunakan GitHub Pages yang tidak mendukung menjalankan layanan seperti di server.
+
 Situs web ini dibangun menggunakan HTML, CSS, dan JavaScript serta beberapa pustaka tambahan, yaitu:
 
 1. [Google Fonts](https://fonts.google.com/)
